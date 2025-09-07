@@ -1,24 +1,35 @@
-[gd_scene load_steps=10 format=3 uid="uid://clwrsdsnmy3md"]
+[gd_scene load_steps=12 format=3 uid="uid://clwrsdsnmy3md"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_m6jki"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ys316"]
 albedo_color = Color(0.21448, 0.1344, 0.28, 1)
 
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_to4tk"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0jsbj"]
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_m6jki"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_ys316"]
 
-[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_to4tk"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_0jsbj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6jki"]
+albedo_color = Color(0.951063, 0.901748, 0, 1)
+metallic = 1.0
+metallic_specular = 1.0
+metallic_texture_channel = 2
 
 [sub_resource type="SphereMesh" id="SphereMesh_q6bo7"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_eso0h"]
 
+[sub_resource type="MeshTexture" id="MeshTexture_ys316"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trumw"]
 albedo_color = Color(1, 0, 0, 1)
+clearcoat_enabled = true
+clearcoat_roughness = 1.0
+clearcoat_texture = SubResource("MeshTexture_ys316")
 
 [node name="Part_A" type="Node3D"]
 
@@ -27,31 +38,52 @@ transform = Transform3D(2.67902, 0, 0, 0, 1, 0, 0, 0, 2.65012, 0.0122526, 0.0486
 mesh = SubResource("PlaneMesh_m6jki")
 surface_material_override/0 = SubResource("StandardMaterial3D_ys316")
 
-[node name="Cylinder" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87304, 0.900276, -0.570861)
-mesh = SubResource("CylinderMesh_m6jki")
-skeleton = NodePath("../Ring")
-
-[node name="Ring" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.782525, -0.0769807, 0.617842, 0.112786, -0.993437, 0.0190696, 0.612318, 0.0846063, 0.786071, -0.249416, 2.28375, 0.196533)
-mesh = SubResource("TorusMesh_ys316")
-skeleton = NodePath("../Octo")
-
 [node name="Octo" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49394, 0.804973, -1.86217)
+transform = Transform3D(0.487097, 0, 0, 0, 0.0118269, 0, 0, 0, 0.150657, -1.49394, 0.102375, -1.67067)
 mesh = SubResource("TubeTrailMesh_to4tk")
 
-[node name="Capsule" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.00115181, -1.84561e-05, 0.999999, 0.877037, -0.480422, 0.00100132, 0.480422, 0.877037, 0.000569544, 0.569136, 0.541021, 1.5115)
+[node name="Capsule" type="MeshInstance3D" parent="Octo"]
+transform = Transform3D(-6.60037e-05, -2.96424e-06, 0.0573399, 2.54532, -0.0357342, 0.00293334, 0.00100023, 0.559678, 4.84053e-06, 0.315915, -2.12233, 0.0298367)
 mesh = SubResource("CapsuleMesh_0jsbj")
-skeleton = NodePath("../Sphere")
+skeleton = NodePath("../../Sphere")
+
+[node name="Cylinder2" type="MeshInstance3D" parent="Octo/Capsule"]
+transform = Transform3D(-0.00172666, 0.0143457, 1.60667, -9.87125e-06, -0.212004, 0.0138396, 1.49814, 5.55349e-06, 0.00185015, 0.0138347, 1.14559, -0.0667801)
+mesh = SubResource("CylinderMesh_m6jki")
+skeleton = NodePath("../../../Ring")
+
+[node name="Cylinder" type="MeshInstance3D" parent="Octo/Capsule"]
+transform = Transform3D(-0.00172666, 0.0143457, 1.60667, -9.87125e-06, -0.212004, 0.0138396, 1.49814, 5.55349e-06, 0.00185015, -0.0186968, -1.17161, -0.0669365)
+mesh = SubResource("CylinderMesh_m6jki")
+skeleton = NodePath("../../../Ring")
+
+[node name="Capsule2" type="MeshInstance3D" parent="Octo"]
+transform = Transform3D(-6.60037e-05, -2.96424e-06, 0.0573399, 2.54532, -0.0357342, 0.00293334, 0.00100023, 0.559678, 4.84053e-06, -0.344273, -2.12233, 0.0298367)
+mesh = SubResource("CapsuleMesh_0jsbj")
+skeleton = NodePath("../../Sphere")
+
+[node name="Cylinder2" type="MeshInstance3D" parent="Octo/Capsule2"]
+transform = Transform3D(-0.00172666, 0.0143457, 1.60667, -9.87125e-06, -0.212004, 0.0138396, 1.49814, 5.55349e-06, 0.00185015, 0.0138347, 1.14559, -0.0667801)
+mesh = SubResource("CylinderMesh_m6jki")
+skeleton = NodePath("../../../Ring")
+
+[node name="Cylinder" type="MeshInstance3D" parent="Octo/Capsule2"]
+transform = Transform3D(-0.00172666, 0.0143457, 1.60667, -9.87125e-06, -0.212004, 0.0138396, 1.49814, 5.55349e-06, 0.00185015, -0.0186968, -1.17161, -0.0669365)
+mesh = SubResource("CylinderMesh_m6jki")
+skeleton = NodePath("../../../Ring")
+
+[node name="Ring" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.879675, -0.289636, 0.377204, 0.381851, 0.0426208, 0.923241, -0.28348, 0.956188, 0.0731056, -0.781747, 1.15797, 0.450323)
+mesh = SubResource("TorusMesh_ys316")
+skeleton = NodePath("../Octo")
+surface_material_override/0 = SubResource("StandardMaterial3D_m6jki")
 
 [node name="Sphere" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.00115181, -1.84561e-05, 0.999999, 0.877037, -0.480422, 0.00100132, 0.480422, 0.877037, 0.000569544, 2.13479, 0.531886, 1.88704)
+transform = Transform3D(-0.0003172, -6.57784e-06, 0.386126, 0.241528, -0.171225, 0.000386635, 0.132304, 0.31258, 0.000219916, 2.13479, 0.531886, 1.88704)
 mesh = SubResource("SphereMesh_q6bo7")
 skeleton = NodePath("../Prism")
 
 [node name="Prism" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.00115181, -1.84561e-05, 0.999999, 0.877037, -0.480422, 0.00100132, 0.480422, 0.877037, 0.000569544, -1.8462, 0.538849, 1.82317)
+transform = Transform3D(-0.0827094, 0.00368266, -0.468197, 0.00196939, 0.269849, 0.00632571, 0.714329, -0.000317518, -0.0542282, -2.07177, 0.16964, 1.50259)
 mesh = SubResource("PrismMesh_eso0h")
 surface_material_override/0 = SubResource("StandardMaterial3D_trumw")
