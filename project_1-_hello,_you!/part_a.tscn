@@ -1,36 +1,11 @@
-[gd_scene load_steps=35 format=3 uid="uid://clwrsdsnmy3md"]
+[gd_scene load_steps=24 format=3 uid="uid://clwrsdsnmy3md"]
+
+[ext_resource type="PackedScene" uid="uid://4sy4oeoj170" path="res://part_b.tscn" id="1_ys316"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_m6jki"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ys316"]
 albedo_color = Color(0.21448, 0.1344, 0.28, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_to4tk"]
-albedo_color = Color(0.768627, 0.560784, 0.356863, 1)
-
-[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_0jsbj"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q6bo7"]
-albedo_color = Color(0.517833, 0.52, 0.494, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_eso0h"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7awo"]
-albedo_color = Color(1, 0.37, 0.37, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_j0tu7"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xb3d"]
-albedo_color = Color(1, 0.368627, 0.368627, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grw75"]
-albedo_color = Color(0.517647, 0.521569, 0.494118, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0j4pn"]
-albedo_color = Color(1, 0.368627, 0.368627, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uojgb"]
-albedo_color = Color(1, 0.368627, 0.368627, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_ys316"]
 
@@ -39,11 +14,6 @@ albedo_color = Color(0.951063, 0.901748, 0, 1)
 metallic = 1.0
 metallic_specular = 1.0
 metallic_texture_channel = 2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_narcd"]
-albedo_color = Color(0, 0, 0, 0)
-
-[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_xr1d8"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_eso0h"]
 
@@ -67,12 +37,6 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j41gs"]
 albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5lpw"]
-albedo_color = Color(0.44, 0.44, 0.44, 1)
-refraction_enabled = true
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_qeu8d"]
 
 [sub_resource type="Gradient" id="Gradient_x03ta"]
 offsets = PackedFloat32Array(0, 0.989071, 1)
@@ -99,6 +63,12 @@ albedo_color = Color(0.29, 0.29, 0.29, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_nxvf6"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5lpw"]
+albedo_color = Color(0.44, 0.44, 0.44, 1)
+refraction_enabled = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qeu8d"]
+
 [node name="Part_A" type="Node3D"]
 
 [node name="PlaceholderFloor" type="MeshInstance3D" parent="."]
@@ -106,100 +76,57 @@ transform = Transform3D(2.67902, 0, 0, 0, 1, 0, 0, 0, 2.65012, 0.0122526, 0.0486
 mesh = SubResource("PlaneMesh_m6jki")
 surface_material_override/0 = SubResource("StandardMaterial3D_ys316")
 
-[node name="Skateboard" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.0400451, -0.00307173, -0.144959, 0.235086, 0.00986734, -0.0401421, 0.424728, -0.00575115, 0.00855116, -0.908466, 0.675548, -0.855122)
-material_override = SubResource("StandardMaterial3D_to4tk")
-mesh = SubResource("TubeTrailMesh_0jsbj")
-skeleton = NodePath("")
-
-[node name="Capsule" type="MeshInstance3D" parent="Skateboard"]
-transform = Transform3D(-6.60037e-05, -2.96424e-06, 0.0573399, 2.54532, -0.0357342, 0.00293334, 0.00100023, 0.559678, 4.84053e-06, 0.315915, -2.12233, 0.0298367)
-material_override = SubResource("StandardMaterial3D_q6bo7")
-mesh = SubResource("CapsuleMesh_eso0h")
-skeleton = NodePath("")
-
-[node name="Cylinder2" type="MeshInstance3D" parent="Skateboard/Capsule"]
-transform = Transform3D(-0.00172666, 0.0143457, 1.60667, -9.87125e-06, -0.212004, 0.0138396, 1.49814, 5.55349e-06, 0.00185015, 0.0138347, 1.14559, -0.0667801)
-material_override = SubResource("StandardMaterial3D_e7awo")
-mesh = SubResource("CylinderMesh_j0tu7")
-skeleton = NodePath("../../../Ring")
-
-[node name="Cylinder" type="MeshInstance3D" parent="Skateboard/Capsule"]
-transform = Transform3D(-0.00172666, 0.0143457, 1.60667, -9.87125e-06, -0.212004, 0.0138396, 1.49814, 5.55349e-06, 0.00185015, -0.0186968, -1.17161, -0.0669365)
-material_override = SubResource("StandardMaterial3D_3xb3d")
-mesh = SubResource("CylinderMesh_j0tu7")
-skeleton = NodePath("../../../Ring")
-
-[node name="Capsule2" type="MeshInstance3D" parent="Skateboard"]
-transform = Transform3D(-6.60037e-05, -2.96424e-06, 0.0573399, 2.54532, -0.0357342, 0.00293334, 0.00100023, 0.559678, 4.84053e-06, -0.344273, -2.12233, 0.0298367)
-material_override = SubResource("StandardMaterial3D_grw75")
-mesh = SubResource("CapsuleMesh_eso0h")
-skeleton = NodePath("")
-
-[node name="Cylinder2" type="MeshInstance3D" parent="Skateboard/Capsule2"]
-transform = Transform3D(-0.00172666, 0.0143457, 1.60667, -9.87125e-06, -0.212004, 0.0138396, 1.49814, 5.55349e-06, 0.00185015, 0.0138347, 1.14559, -0.0667801)
-material_override = SubResource("StandardMaterial3D_0j4pn")
-mesh = SubResource("CylinderMesh_j0tu7")
-skeleton = NodePath("../../../Ring")
-
-[node name="Cylinder" type="MeshInstance3D" parent="Skateboard/Capsule2"]
-transform = Transform3D(-0.00172666, 0.0143457, 1.60667, -9.87125e-06, -0.212004, 0.0138396, 1.49814, 5.55349e-06, 0.00185015, -0.0186968, -1.17161, -0.0669365)
-material_override = SubResource("StandardMaterial3D_uojgb")
-mesh = SubResource("CylinderMesh_j0tu7")
-skeleton = NodePath("../../../Ring")
-
 [node name="Ring" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.985316, 0.167125, -0.0349328, -0.0202776, 0.0886088, 0.995861, 0.169529, 0.981946, -0.0839188, -0.948187, 0.632233, -0.440589)
 mesh = SubResource("TorusMesh_ys316")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_m6jki")
 
-[node name="Octo 2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.16407, -0.000536679, 0.327866, 0.0032823, 1.0055, 0.0184897, -0.285183, 0.0137626, -1.33808, 1.61832, 0.538775, -0.523393)
-material_override = SubResource("StandardMaterial3D_narcd")
-mesh = SubResource("TubeTrailMesh_xr1d8")
-skeleton = NodePath("../Prism")
-
-[node name="Prism" type="MeshInstance3D" parent="."]
+[node name="Ramp" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.019305, 0.00454448, -1.31078, 0.00189666, 0.340674, 0.0175988, 0.692275, -0.00106003, 0.0365044, -0.975094, 0.18802, -1.21529)
 mesh = SubResource("PrismMesh_eso0h")
 surface_material_override/0 = SubResource("StandardMaterial3D_trumw")
 
-[node name="Cube" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.544176, 0, 0, 0, 0.0229678, 0, 0, 0, 0.256078, -0.074424, 0.504405, 1.81371)
+[node name="Desk" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.322129, 0, 0.206391, 0, 0.0229678, 0, -0.438589, 0, 0.151587, 1.93967, 0.504405, 1.16271)
 material_override = SubResource("StandardMaterial3D_bo5qo")
 mesh = SubResource("BoxMesh_tvfxj")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cube"]
+[node name="Desk Leg 1" type="MeshInstance3D" parent="Desk"]
 transform = Transform3D(0.057472, 0, 0, 0, 19.1359, 0, 0, 0, 0.850675, 0.481572, -10.1063, 0.0575976)
 material_override = SubResource("StandardMaterial3D_2unr2")
 mesh = SubResource("BoxMesh_k0ie8")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Cube"]
+[node name="Desk Leg 2" type="MeshInstance3D" parent="Desk"]
 transform = Transform3D(0.057472, 0, 0, 0, 19.1359, 0, 0, 0, 0.850675, -0.465601, -10.1063, 0.0575976)
 material_override = SubResource("StandardMaterial3D_j41gs")
 mesh = SubResource("BoxMesh_k0ie8")
 skeleton = NodePath("")
 
-[node name="Capsule" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.00295382, 0, -0.127816, 0, 0.125325, 0, 0.225643, 0, 0.0016732, -0.280496, 0.609293, 1.82044)
-material_override = SubResource("StandardMaterial3D_s5lpw")
-mesh = SubResource("CapsuleMesh_qeu8d")
-
-[node name="Screen" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.239482, 0, 0, 0, 0.148357, 0, 0, 0, 0.0117899, -0.0646576, 0.67676, 1.86173)
+[node name="Screen" type="MeshInstance3D" parent="Desk"]
+transform = Transform3D(0.440081, 0, 0, 0, 6.45934, 0, 0, 0, 0.0460401, 0.0179471, 7.5042, 0.187531)
 material_override = SubResource("StandardMaterial3D_ohuq4")
 mesh = SubResource("BoxMesh_nwyht")
+skeleton = NodePath("../..")
 
-[node name="Stand" type="MeshInstance3D" parent="Screen"]
+[node name="Stand" type="MeshInstance3D" parent="Desk/Screen"]
 transform = Transform3D(-0.427039, -0.00585216, 3.77278e-05, 1.10464e-09, 0.0239241, 0.0865676, -0.144593, 7.13118, -0.0459733, 0.0133572, -1.02461, -0.879288)
 material_override = SubResource("StandardMaterial3D_gft6p")
 mesh = SubResource("PrismMesh_2peyv")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Pole" type="MeshInstance3D" parent="Screen"]
+[node name="Pole" type="MeshInstance3D" parent="Desk/Screen"]
 transform = Transform3D(0.0784374, 0, 0, 0, 0.580064, 0, 0, 0, 1.29481, 0.00436357, -0.466157, 0.890457)
 material_override = SubResource("StandardMaterial3D_18iv2")
 mesh = SubResource("CapsuleMesh_nxvf6")
+skeleton = NodePath("../../..")
+
+[node name="Capsule" type="MeshInstance3D" parent="Desk"]
+transform = Transform3D(0.00542807, 0, -0.234879, 0, 5.45655, 0, 0.88115, 0, 0.00653396, -0.378686, 4.56675, 0.0263028)
+material_override = SubResource("StandardMaterial3D_s5lpw")
+mesh = SubResource("CapsuleMesh_qeu8d")
 skeleton = NodePath("../..")
+
+[node name="Skateboard" parent="." instance=ExtResource("1_ys316")]
+transform = Transform3D(-0.0938891, 0.136922, 0.986122, -0.523278, 0.835861, -0.16588, -0.846974, -0.531591, -0.0068297, -1.06335, 0.605807, -0.960078)
