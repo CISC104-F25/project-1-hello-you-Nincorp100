@@ -1,6 +1,24 @@
-[gd_scene load_steps=24 format=3 uid="uid://clwrsdsnmy3md"]
+[gd_scene load_steps=28 format=3 uid="uid://clwrsdsnmy3md"]
 
 [ext_resource type="PackedScene" uid="uid://4sy4oeoj170" path="res://part_b.tscn" id="1_ys316"]
+[ext_resource type="PackedScene" uid="uid://clhttn3a0ep70" path="res://part_c.tscn" id="2_to4tk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_to4tk"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.171215, 0.23502, 0.250669, 1)
+ground_bottom_color = Color(0, 0.255219, 0.317815, 1)
+ground_horizon_color = Color(0.171215, 0.23502, 0.250669, 1)
+energy_multiplier = 0.7
+
+[sub_resource type="Sky" id="Sky_0jsbj"]
+sky_material = SubResource("ProceduralSkyMaterial_to4tk")
+
+[sub_resource type="Environment" id="Environment_q6bo7"]
+background_mode = 2
+sky = SubResource("Sky_0jsbj")
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_m6jki"]
 
@@ -71,6 +89,16 @@ refraction_enabled = true
 
 [node name="Part_A" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_q6bo7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.24869, 0.0152138, -0.968464, 0, 0.999877, 0.0157073, 0.968583, -0.00390625, 0.248659, 0, 0, 0)
+light_color = Color(0.72, 0, 0, 1)
+light_energy = 64.0
+shadow_enabled = true
+directional_shadow_max_distance = 234.0
+
 [node name="PlaceholderFloor" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.67902, 0, 0, 0, 1, 0, 0, 0, 2.65012, 0.0122526, 0.0486863, -0.0218153)
 mesh = SubResource("PlaneMesh_m6jki")
@@ -130,3 +158,8 @@ skeleton = NodePath("../..")
 
 [node name="Skateboard" parent="." instance=ExtResource("1_ys316")]
 transform = Transform3D(-0.0938891, 0.136922, 0.986122, -0.523278, 0.835861, -0.16588, -0.846974, -0.531591, -0.0068297, -1.06335, 0.605807, -0.960078)
+
+[node name="Part_C" parent="." instance=ExtResource("2_to4tk")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.763287, -0.00231059, 0.646055, -0.00152994, 0.999997, 0.00176889, -0.646058, 0.000361746, -0.763288, 1.88223, 0.787856, -1.67851)
