@@ -1,19 +1,70 @@
-[gd_scene format=3 uid="uid://clhttn3a0ep70"]
+[gd_scene load_steps=6 format=3 uid="uid://clhttn3a0ep70"]
+
+[ext_resource type="Texture2D" uid="uid://d3cmjtfawxf61" path="res://icon.svg" id="1_e15qq"]
+
+[sub_resource type="SystemFont" id="SystemFont_e15qq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3seef"]
+
+[sub_resource type="FontVariation" id="FontVariation_3seef"]
+baseline_offset = -0.05
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovfvb"]
+bg_color = Color(1, 0, 0.0666666, 1)
 
 [node name="Part_C" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 3.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
+rotation = 0.00738683
 
-[node name="PlaceholderLabel" type="Label" parent="."]
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 0.05, 0.05, 1)
+self_modulate = Color(0.58, 0.58, 0.58, 1)
 layout_mode = 0
-offset_right = 1151.0
-offset_bottom = 656.0
-theme_override_font_sizes/font_size = 20
-text = "Add more labels, images, and other Control nodes to this scene to build your personal poster for Part C.
+offset_left = 620.0
+offset_top = 185.0
+offset_right = 1192.0
+offset_bottom = 401.0
+rotation = 0.448498
+theme_override_fonts/font = SubResource("SystemFont_e15qq")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_3seef")
+text = "Clarabelle Gatewood :)"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-Remember that you may need to scroll down to \"Theme Overrides > Font Sizes\" in the Inspector 
-to make your labels big enough to read. (This is font size 20px, for reference)."
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 71.0
+offset_right = 246.0
+offset_bottom = 324.0
+scale = Vector2(1.84095, 2.12863)
+theme_override_fonts/normal_font = SubResource("FontVariation_3seef")
+theme_override_styles/background = SubResource("StyleBoxFlat_ovfvb")
+text = "Top 3 Games: Cyberpunk 2077, Outer Wilds, Alice: Madness Returns
+
+Top 3 Movies: I Saw the TV Glow, Scott Pilgrim vs. the World, Bladerunner
+
+Top 3 Music Artists: Ashnikko, Siouxie & the Banshees, Arkum"
+fit_content = true
+scroll_following = true
+tab_size = 20
+visible_characters = 800
+visible_ratio = 3.9801
+text_direction = 1
+structured_text_bidi_override = 2
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(926.341, 178.162)
+rotation = 0.482991
+scale = Vector2(1.94595, 1.87264)
+texture = ExtResource("1_e15qq")
